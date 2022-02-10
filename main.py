@@ -16,6 +16,8 @@ FONT_NAME = "Courier"
 WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
+reps = 0
+
 
 # TODO: ---------------------------- TIMER RESET ------------------------------- #
 
@@ -23,7 +25,24 @@ LONG_BREAK_MIN = 20
 def start_timer():
     """This function is responsible for
     the response from the button click"""
-    count_down(1*60)
+    global reps
+    reps += 1
+
+    work_sec = WORK_MIN * 60
+    short_break_sec = SHORT_BREAK_MIN * 60
+    long_break_sec = LONG_BREAK_MIN * 60
+
+    if reps % 8 == 0:
+        timer_rest()
+        count_down(long_break_sec)
+
+    elif reps % 2 == 0:
+        timer_rest()
+        count_down(SHORT_BREAK_MIN)
+    else:
+        timer_work()
+        count_down(LONG_BREAK_MIN)
+
 
 # TODO: ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 def count_down(count):
@@ -36,20 +55,43 @@ def count_down(count):
     canvas.itemconfig(timer_text, text=f"{minutes}:{seconds}")
     if count > 0:
         window.after(1000, count_down, count - 1)
+    else:
+        start_timer()
+
+
+def timer_work():
+    # Config for the label
+    timer_label.config(text="Working", font=(FONT_NAME, 36), bg=YELLOW, fg=GREEN)
+    # location
+    timer_label.grid(column=2, row=0)
+
+
+def timer_rest():
+    # Config for the label
+    timer_label.config(text="Break", font=(FONT_NAME, 36), bg=YELLOW, fg=PINK)
+    # location
+    timer_label.grid(column=2, row=0)
+
+
+def start_screen():
+    # Config for the label
+    timer_label.config(text="Ready", font=(FONT_NAME, 36), bg=YELLOW, fg=RED)
+    # location
+    timer_label.grid(column=2, row=0)
+
+
 # TODO: ---------------------------- UI SETUP ------------------------------- #
-# initilize the tkinter Class
+# initialize the tkinter Class
 window = tkinter.Tk()
 # change the title of the screen
 window.title("Pomodoro")
 # set the window size and background
 window.config(padx=140, pady=50, bg=YELLOW)
-
-
-# create a new canvas and set the windth, hieght, and change
+# create a new canvas and set the width, height, and change
 canvas = tkinter.Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
 # imported the image file to add to canvas
 tomato_img = tkinter.PhotoImage(file="img/pomodoro.png")
-# adjisted the image on the window
+# adjusted the image on the window
 canvas.create_image(100, 112, image=tomato_img)
 # added the text layered on top of the picture
 timer_text = canvas.create_text(100, 133, text="00:00", fill="white", font=(FONT_NAME, 36, "bold"))
@@ -57,11 +99,7 @@ timer_text = canvas.create_text(100, 133, text="00:00", fill="white", font=(FONT
 canvas.grid(column=2, row=2)
 # timer label above the tomato_img
 timer_label = tkinter.Label()
-# Config for the label
-timer_label.config(text="Timer", font=(FONT_NAME, 36), bg=YELLOW, fg=GREEN)
-# location
-timer_label.grid(column=2, row=0)
-
+start_screen()
 # count_down(5)
 
 start_button = tkinter.Button(text="Start", command=start_timer)
