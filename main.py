@@ -23,7 +23,7 @@ LONG_BREAK_MIN = 20
 def start_timer():
     """This function is responsible for
     the response from the button click"""
-    count_down(5*60)
+    count_down(1*60)
 
 # TODO: ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 def count_down(count):
@@ -31,6 +31,8 @@ def count_down(count):
     minutes and seconds of the timer"""
     minutes = math.floor(count / 60)
     seconds = math.floor(count % 60)
+    if seconds < 10:
+        seconds = f"0{seconds}"
     canvas.itemconfig(timer_text, text=f"{minutes}:{seconds}")
     if count > 0:
         window.after(1000, count_down, count - 1)
