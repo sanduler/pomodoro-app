@@ -5,6 +5,7 @@
 
 import tkinter
 import time
+import math
 
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
@@ -19,10 +20,18 @@ LONG_BREAK_MIN = 20
 # TODO: ---------------------------- TIMER RESET ------------------------------- #
 
 # TODO: ---------------------------- TIMER MECHANISM ------------------------------- #
+def start_timer():
+    """This function is responsible for
+    the response from the button click"""
+    count_down(5*60)
 
 # TODO: ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 def count_down(count):
-    canvas.itemconfig(timer_text, text=count)
+    """This function is responsible for displaying the
+    minutes and seconds of the timer"""
+    minutes = math.floor(count / 60)
+    seconds = math.floor(count % 60)
+    canvas.itemconfig(timer_text, text=f"{minutes}:{seconds}")
     if count > 0:
         window.after(1000, count_down, count - 1)
 # TODO: ---------------------------- UI SETUP ------------------------------- #
@@ -51,9 +60,9 @@ timer_label.config(text="Timer", font=(FONT_NAME, 36), bg=YELLOW, fg=GREEN)
 # location
 timer_label.grid(column=2, row=0)
 
-count_down(5)
+# count_down(5)
 
-start_button = tkinter.Button(text="Start")
+start_button = tkinter.Button(text="Start", command=start_timer)
 start_button.grid(row=3, column=0)
 
 reset_button = tkinter.Button(text="Reset")
