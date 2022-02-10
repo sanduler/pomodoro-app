@@ -25,13 +25,20 @@ def start_timer():
     """This function is responsible for
     the response from the button click"""
     global reps
-    if reps == 1 or reps == 3 or reps == 5 or reps == 7:
-        work_sec = WORK_MIN * 60
-    elif reps == 2 or reps == 4 or reps == 6:
-        short_break_sec = SHORT_BREAK_MIN *60
-    elif reps == 8:
-        long_break_sec = LONG_BREAK_MIN *60
-    count_down()
+    reps += 1
+
+    work_sec = WORK_MIN * 60
+    short_break_sec = SHORT_BREAK_MIN * 60
+    long_break_sec = LONG_BREAK_MIN * 60
+
+    if reps % 8 == 0:
+        count_down(long_break_sec)
+    elif reps % 2 == 0:
+        count_down(SHORT_BREAK_MIN)
+    else:
+        count_down(LONG_BREAK_MIN)
+
+
 
 # TODO: ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 def count_down(count):
