@@ -1,3 +1,9 @@
+# Ruben Sanduleac
+# The Pomodoro app employs a timer to divide work into intervals of 25 minutes each, separated by short breaks.
+# This program uses Francesco Cirillo Pomodoro Technique is a time management method. The program utilizes
+# concepts such as timeboxing and iterative and incremental development commonly used in software design
+
+import tkinter
 
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
@@ -9,10 +15,10 @@ WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 
-# ---------------------------- TIMER RESET ------------------------------- # 
+# TODO: ---------------------------- TIMER RESET ------------------------------- #
 
-# ---------------------------- TIMER MECHANISM ------------------------------- # 
+# TODO: ---------------------------- TIMER MECHANISM ------------------------------- #
 
-# ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
+# TODO: ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 
-# ---------------------------- UI SETUP ------------------------------- #
+# TODO: ---------------------------- UI SETUP ------------------------------- #
