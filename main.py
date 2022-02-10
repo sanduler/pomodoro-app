@@ -45,11 +45,14 @@ timer_label.config(text="Timer", font=(FONT_NAME, 36), bg=YELLOW, fg=GREEN)
 # location
 timer_label.grid(column=2, row=0)
 
-start_button = tkinter.Button(text="Start", bg=YELLOW)
+start_button = tkinter.Button(text="Start")
 start_button.grid(row=3, column=0)
 
-reset_button = tkinter.Button(text="Reset", bg=YELLOW)
+reset_button = tkinter.Button(text="Reset")
 reset_button.grid(row=3, column=3)
+
+check_mark = tkinter.Label(text="✔", fg=GREEN, bg=YELLOW)
+check_mark.grid(column=2, row=4)
 # center the window to the middle of the screen
 window.eval('tk::PlaceWindow . center')
 # prevent the screen from closing
