@@ -22,3 +22,14 @@ LONG_BREAK_MIN = 20
 # TODO: ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 
 # TODO: ---------------------------- UI SETUP ------------------------------- #
+window = tkinter.Tk()
+window.title("Pomodoro")
+
+canvas = tkinter.Canvas(width=200, height=224)
+tomato_img = tkinter.PhotoImage(file="img/pomodoro.png")
+canvas.create_image(100, 112, image=tomato_img)
+canvas.pack()
+
+# center the window to the middle of the screen
+window.eval('tk::PlaceWindow . center')
+window.mainloop()
