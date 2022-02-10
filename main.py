@@ -24,10 +24,11 @@ LONG_BREAK_MIN = 20
 # TODO: ---------------------------- UI SETUP ------------------------------- #
 window = tkinter.Tk()
 window.title("Pomodoro")
-
-canvas = tkinter.Canvas(width=200, height=224)
+window.config(padx=140, pady=50, bg=YELLOW)
+canvas = tkinter.Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
 tomato_img = tkinter.PhotoImage(file="img/pomodoro.png")
 canvas.create_image(100, 112, image=tomato_img)
+canvas.create_text(100, 133, text="00:00", fill="white", font=(FONT_NAME, 36, "bold"))
 canvas.pack()
 
 # center the window to the middle of the screen
