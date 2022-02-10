@@ -16,6 +16,7 @@ FONT_NAME = "Courier"
 WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
+reps = 0
 
 # TODO: ---------------------------- TIMER RESET ------------------------------- #
 
@@ -23,7 +24,14 @@ LONG_BREAK_MIN = 20
 def start_timer():
     """This function is responsible for
     the response from the button click"""
-    count_down(1*60)
+    global reps
+    if reps == 1 or reps == 3 or reps == 5 or reps == 7:
+        work_sec = WORK_MIN * 60
+    elif reps == 2 or reps == 4 or reps == 6:
+        short_break_sec = SHORT_BREAK_MIN *60
+    elif reps == 8:
+        long_break_sec = LONG_BREAK_MIN *60
+    count_down()
 
 # TODO: ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 def count_down(count):
