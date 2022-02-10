@@ -58,17 +58,20 @@ def count_down(count):
     else:
         start_timer()
 
+
 def timer_work():
     # Config for the label
     timer_label.config(text="Working", font=(FONT_NAME, 36), bg=YELLOW, fg=GREEN)
     # location
     timer_label.grid(column=2, row=0)
 
+
 def timer_rest():
     # Config for the label
     timer_label.config(text="Break", font=(FONT_NAME, 36), bg=YELLOW, fg=PINK)
     # location
     timer_label.grid(column=2, row=0)
+
 
 def start_screen():
     # Config for the label
